@@ -26,7 +26,7 @@ class UsersController extends Controller
         $user = new User();
 
         $user->name = $request->name;
-        $user->email = time().'@mail.com';
+        $user->email = time().'@gmail.com';
         $user->password = Hash::make($request->input('password'));
 
         if ($user->save()){

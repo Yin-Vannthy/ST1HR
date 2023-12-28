@@ -37,15 +37,15 @@
                                 @endif
 
                                 <div class="form-group">
-                                    <label for="name" class="form-label">User Profile</label>
+                                    <label for="image" class="form-label">User Profile</label>
                                     <input
-                                        required
                                         type="file"
                                         class="form-control"
                                         id="image"
                                         name="image"
                                     >
-                                </div><div class="form-group">
+                                </div>
+                                <div class="form-group">
                                     <label for="name" class="form-label">User Name</label>
                                     <input
                                         autocomplete="off"

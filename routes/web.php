@@ -11,4 +11,6 @@ Route::get('/admin/users', function (){
     return view('users.users');
 });
 
+//include users route
+include 'admin/users.php';
 

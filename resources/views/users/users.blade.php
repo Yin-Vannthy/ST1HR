@@ -25,33 +25,54 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <button class="btn btn-primary">
-                                <i class="fas fa-plus-circle"></i>
-                                Add
-                            </button>
+                            <a href="{{ route('index_create') }}">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-plus-circle"></i>
+                                    Add
+                                </button>
+                            </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-sm table-borderless table-striped">
                                     <thead>
-                                    <tr class="bg-primary">
+                                    <tr class="table-primary">
                                         <th>No.</th>
-                                        <th>Profile</th>
-                                        <th>Name</th>
+                                        <th width="50">Profile</th>
+                                        <th class="pl-5">Name</th>
                                         <th>Gender</th>
                                         <th>Phone Number</th>
                                         <th>Email</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach([1,2,3,4,5] as $item)
+                                    @foreach($data as $item)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Profile</td>
-                                            <td>Yin Vannthy</td>
-                                            <td>Male</td>
-                                            <td>011859312</td>
-                                            <td>yinvannthy@gmail.com</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>
+                                                <img
+                                                    style="width: 100%;"
+                                                    class="img-thumbnail"
+                                                    src="{{ asset('images').'/'.$item->image }}"
+                                                    alt="image">
+                                            </td>
+                                            <td class="pl-5">{{ $item->name }}</td>
+                                            <td>{{ $item->gender }}</td>
+                                            <td>{{ $item->phone }}</td>
+                                            <td>{{ $item->email }}</td>
+                                            <td>
+                                                <a href="#">
+                                                    <button>
+                                                        <i class="fas fa-edit text-primary"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="{{ route('confirm_delete').'?id='.$item->id }}">
+                                                    <button>
+                                                        <i class="fas fa-trash text-danger"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -59,34 +80,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                    <input autocomplete="off" required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                                    <input autocomplete="off" required type="password" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <button type="reset" class="btn btn-danger float-left">
-                                    <i class="fas fa-window-close"></i>
-                                    Cancel
-                                </button>
-                                <button type="submit" class="btn btn-primary float-right">
-                                    <i class="fas fa-save"></i>
-                                    Submit
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>

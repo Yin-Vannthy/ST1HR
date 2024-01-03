@@ -43,25 +43,51 @@
                                         <th>Gender</th>
                                         <th>Phone Number</th>
                                         <th>Email</th>
+                                        <th>Permission</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($data as $item)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td class="align-middle">{{ $loop->iteration }}</td>
                                             <td>
-                                                <img
-                                                    style="width: 100%;"
-                                                    class="img-thumbnail"
-                                                    src="{{ asset('images').'/'.$item->image }}"
-                                                    alt="image">
+                                                @if($item->image)
+                                                    <img
+                                                        style="width: 100%;"
+                                                        class="img-thumbnail"
+                                                        src="{{ asset('images').'/'.$item->image }}"
+                                                        alt="image">
+                                                @else
+                                                    <img
+                                                        style="width: 100%;"
+                                                        class="img-thumbnail"
+                                                        src="{{ asset('dist/img/no_profile.jpg')}}"
+                                                        alt="image">
+                                                @endif
+
                                             </td>
-                                            <td class="pl-5">{{ $item->name }}</td>
-                                            <td>{{ $item->gender }}</td>
-                                            <td>{{ $item->phone }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td>
+                                            <td
+                                                class="pl-5 align-middle"
+                                                style="text-transform: capitalize;"
+                                            >
+                                                {{ $item->name }}
+                                            </td>
+                                            <td
+                                                class="align-middle"
+                                                style="text-transform: uppercase"
+                                            >
+                                                {{ $item->gender }}
+                                            </td>
+                                            <td class="align-middle">{{ $item->telphone }}</td>
+                                            <td class="align-middle">{{ $item->email }}</td>
+                                            <td
+                                                class="align-middle"
+                                                style="text-transform: uppercase"
+                                            >
+                                                {{ $item->permission }}
+                                            </td>
+                                            <td class="align-middle">
                                                 <a href="#">
                                                     <button>
                                                         <i class="fas fa-edit text-primary"></i>

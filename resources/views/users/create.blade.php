@@ -45,47 +45,88 @@
                                         name="image"
                                     >
                                 </div>
-                                <div class="form-group">
-                                    <label for="name" class="form-label">User Name</label>
-                                    <input
-                                        autocomplete="off"
-                                        required
-                                        type="text"
-                                        class="form-control"
-                                        id="name"
-                                        name="name"
-                                        value="{{old('name')}}"
-                                    >
+                                <div class="row">
+                                    <div class="form-group col-12 col-md-6">
+                                        <label for="name" class="form-label">User Name</label>
+                                        <input
+                                            autocomplete="off"
+                                            required
+                                            type="text"
+                                            class="form-control"
+                                            id="name"
+                                            name="name"
+                                            value="{{old('name')}}"
+                                        >
+                                    </div>
+                                    <div class="form-group col-12 col-md-6">
+                                        <label for="telphone" class="form-label">Phone Number</label>
+                                        <input
+                                            autocomplete="off"
+                                            required
+                                            type="text"
+                                            inputmode="numeric"
+                                            pattern="\d*"
+                                            class="form-control"
+                                            id="telphone"
+                                            name="telphone"
+                                            value="{{old('telphone')}}"
+                                        >
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-12 col-md-6">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select name="gender" id="gender" class="form-select form-control" required>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-12 col-md-6">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input
+                                            autocomplete="off"
+                                            required
+                                            type="email"
+                                            class="form-control"
+                                            id="email"
+                                            name="email"
+                                            value="{{old('email')}}"
+                                        >
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="gender" class="form-label">Gender</label>
-                                    <select name="gender" id="gender" class="form-select form-control" required>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
+                                    <label for="permission" class="form-label">Permission</label>
+                                    <select name="permission" id="permission" class="form-select form-control" required>
+                                        <option value="admin">Admin</option>
+                                        <option value="hr">HR</option>
+                                        <option value="employee">Employee</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input
-                                        autocomplete="off"
-                                        required type="password"
-                                        class="form-control" id="password"
-                                        name="password"
-                                        value="{{old('password')}}"
-                                    >
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input
+                                            autocomplete="off"
+                                            required type="password"
+                                            class="form-control" id="password"
+                                            name="password"
+                                            value="{{old('password')}}"
+                                        >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="conifirm_password" class="form-label">Confirm Password</label>
+                                        <input
+                                            autocomplete="off"
+                                            required
+                                            type="password"
+                                            class="form-control"
+                                            id="conifirm_password"
+                                            name="conifirm_password"
+                                            value="{{old('confirm_password')}}"
+                                        >
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="conifirm_password" class="form-label">Confirm Password</label>
-                                    <input
-                                        autocomplete="off"
-                                        required
-                                        type="password"
-                                        class="form-control"
-                                        id="conifirm_password"
-                                        name="conifirm_password"
-                                        value="{{old('confirm_password')}}"
-                                    >
-                                </div>
+
                                 <div class="form-group">
                                     <a href="{{ route('index_user') }}">
                                         <button type="button" class="btn btn-danger float-left">

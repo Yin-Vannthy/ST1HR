@@ -32,6 +32,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="{{ url('/admin') }}" class="nav-link">Home</a>
                 </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ url('/logout') }}" class="nav-link">Log Out</a>
+                </li>
             </ul>
 
             <!-- Right navbar links -->
@@ -157,11 +160,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2"
-                            alt="User Image">
+
+                        @if(auth()->user()->image)
+                            <img
+                                src="{{ asset('images'.'/'.auth()->user()->image) }}"
+                                class="img-circle elevation-2"
+                                alt="User Image"
+                                style="width: 40px;
+                                      height: 40px;
+                                      border-radius: 50%;
+                                      object-fit: cover;"
+                            >
+                        @else
+                            <img
+                                style="width: 40px;
+                                      height: 40px;
+                                      border-radius: 50%;
+                                      object-fit: cover;"
+                                class="img-thumbnail"
+                                src="{{ asset('dist/img/no_profile.jpg')}}"
+                                alt="image">
+                        @endif
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Yin Vannthy</a>
+                        <a
+                            href="#"
+                            class="d-block"
+                            style="text-transform: uppercase"
+                        >
+                            {{auth()->user()->name}}
+                        </a>
                     </div>
                 </div>
 
@@ -175,15 +203,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{url('/admin/users')}}" class="nav-link {{ url()-> current() == url('/admin/users') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Users
-                                    <span class="right badge badge-danger">10</span>
-                                </p>
-                            </a>
-                        </li>
+
+                        @if(auth()->user()->permission != 'employee')
+                            <li class="nav-item">
+                                <a href="{{url('/admin/users')}}" class="nav-link {{ url()-> current() == url('/admin/users') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Users
+                                        <span class="right badge badge-danger">10</span>
+                                    </p>
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="{{url('/admin/time_table')}}" class="nav-link {{ url()-> current() == url('/admin/time_table') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-user-clock"></i>
+                                    <p>
+                                        Time Table
+                                    </p>
+                                </a>
+                            </li>
+                        @endif
+
                         <li class="nav-item menu-open1">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>

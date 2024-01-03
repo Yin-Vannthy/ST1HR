@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-    <div class="content-wrapper">
+    <div class="content">
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -18,42 +18,50 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-4">
+                <div class="col-4 mx-auto">
                     <div class="card">
                         <div class="card-body">
-                            Do you want to delete user <strong>{{ $data->name }}</strong>?
-                            <ul>
-                                @if($data->profile)
-                                    <li style="list-style: none">
+                            <span>Do you want to delete user <strong>{{ $data->name }}</strong>?</span>
+                            <ul class="list-unstyled">
+                                @if($data->image)
+                                    <li>
                                         <img
-                                            style="width: 50%"
-                                            src="{{ asset('/images').'/'.$data->profile }}"
+                                            style="width: 100%;"
+                                            src="{{ asset('/images').'/'.$data->image }}"
                                             class="img-fluid img-thumbnail"
                                             alt="{{ $data->name }}"
                                         >
                                     </li>
+                                @else
+                                    <li>
+                                        <img
+                                            style="width: 100%;"
+                                            class="img-thumbnail"
+                                            src="{{ asset('dist/img/no_profile.jpg')}}"
+                                            alt="image">
+                                    </li>
                                 @endif
-                                <li>Name: {{ $data->name }}</li>
+                                <li><strong>Name:</strong> {{ $data->name }}</li>
                             </ul>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12 col-md-12 col-lg-6 mb-2">
                                     <a href="{{ route('index_user') }}">
-                                        <button type="reset" class="btn btn-secondary float-left">
+                                        <button type="reset" class="btn btn-secondary btn-block text-sm-center">
                                             <i class="fas fa-times"></i>
-                                            Cancel
+                                            <span class="d-md-none">Cancel</span>
+                                            <span class="d-none d-md-inline">Cancel</span>
                                         </button>
                                     </a>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-12 col-lg-6 mb-2">
                                     <form method="post" action="{{ route('delete_user') }}">
                                         @csrf
-
                                         <input type="hidden" name="id" value="{{ $data->id }}">
-                                        <button type="submit" class="btn btn-danger float-right">
+                                        <button type="submit" class="btn btn-danger btn-block text-sm-center">
                                             <i class="far fa-trash-alt"></i>
-                                            Yes Delete
+                                            <span class="d-md-none">Yes, Delete</span>
+                                            <span class="d-none d-md-inline">Yes, Delete</span>
                                         </button>
-
                                     </form>
                                 </div>
                             </div>

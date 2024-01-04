@@ -160,27 +160,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-
-                        @if(auth()->user()->image)
-                            <img
-                                src="{{ asset('images'.'/'.auth()->user()->image) }}"
-                                class="img-circle elevation-2"
-                                alt="User Image"
-                                style="width: 40px;
-                                      height: 40px;
-                                      border-radius: 50%;
-                                      object-fit: cover;"
-                            >
-                        @else
-                            <img
-                                style="width: 40px;
-                                      height: 40px;
-                                      border-radius: 50%;
-                                      object-fit: cover;"
-                                class="img-thumbnail"
-                                src="{{ asset('dist/img/no_profile.jpg')}}"
-                                alt="image">
-                        @endif
+                        <img
+                            src="{{ asset('images'.'/'.auth()->user()->image) }}"
+                            class="img-circle elevation-2"
+                            alt="User Image"
+                            style="width: 40px;
+                                  height: 40px;
+                                  border-radius: 50%;
+                                  object-fit: cover;"
+                        >
                     </div>
                     <div class="info">
                         <a

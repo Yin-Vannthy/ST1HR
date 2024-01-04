@@ -26,7 +26,7 @@
                                 @if($data->image)
                                     <li>
                                         <img
-                                            style="width: 100%;"
+                                            style="width: 100%; max-height: 480px;"
                                             src="{{ asset('/images').'/'.$data->image }}"
                                             class="img-fluid img-thumbnail"
                                             alt="{{ $data->name }}"

@@ -25,3 +25,9 @@ Route::get('/admin/users/confirm_delete', [\App\Http\Controllers\UsersController
 //after coonfirm delete
 Route::post('/admin/users/delete_user', [\App\Http\Controllers\UsersController::class, 'delete_user'])
     ->name('delete_user');
+
+Route::get('/admin/users/index_update_user', [\App\Http\Controllers\UsersController::class, 'index_update_user'])
+    ->name('index_update_user');
+
+Route::post('/admin/users/update', [\App\Http\Controllers\UsersController::class, 'update'])
+    ->name('update');

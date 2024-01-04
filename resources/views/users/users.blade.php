@@ -52,20 +52,15 @@
                                         <tr>
                                             <td class="align-middle">{{ $loop->iteration }}</td>
                                             <td>
-                                                @if($item->image)
-                                                    <img
-                                                        style="width: 100%;"
-                                                        class="img-thumbnail"
-                                                        src="{{ asset('images').'/'.$item->image }}"
-                                                        alt="image">
-                                                @else
-                                                    <img
-                                                        style="width: 100%;"
-                                                        class="img-thumbnail"
-                                                        src="{{ asset('dist/img/no_profile.jpg')}}"
-                                                        alt="image">
-                                                @endif
-
+                                                <img
+                                                    style="
+                                                    width: 100%;
+                                                    max-height: 60px;
+                                                    "
+                                                    class="img-thumbnail"
+                                                    src="{{ asset('images').'/'.$item->image }}"
+                                                    alt="image"
+                                                >
                                             </td>
                                             <td
                                                 class="pl-5 align-middle"
@@ -88,7 +83,7 @@
                                                 {{ $item->permission }}
                                             </td>
                                             <td class="align-middle">
-                                                <a href="#">
+                                                <a href="{{ route('index_update_user').'?id='.$item->id }}">
                                                     <button>
                                                         <i class="fas fa-edit text-primary"></i>
                                                     </button>

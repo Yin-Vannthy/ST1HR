@@ -34,7 +34,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-sm table-borderless table-striped">
+                                <table class="table table-sm table-borderless table-striped" id="myTable">
                                     <thead>
                                     <tr class="table-primary">
                                         <th>No.</th>
@@ -55,7 +55,7 @@
                                                 <img
                                                     style="
                                                     width: 100%;
-                                                    max-height: 60px;
+                                                    max-height: 80px;
                                                     "
                                                     class="img-thumbnail"
                                                     src="{{ asset('images').'/'.$item->image }}"

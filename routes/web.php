@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,6 +24,8 @@ Route::middleware('auth')->group(function (){
     //include users route
     include 'admin/users.php';
     include 'admin/clock_in.php';
+    include 'admin/clock_out.php';
+    include 'admin/time_table.php';
 });
 
 Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])

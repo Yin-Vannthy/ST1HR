@@ -17,6 +17,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.8/datatables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -198,11 +200,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>
                                         Users
-                                        <span class="right badge badge-danger">10</span>
+                                        <span class="right badge badge-danger">
+                                            {{ $userCount }}
+                                        </span>
                                     </p>
                                 </a>
                             </li>
-                        @else
+                        @endif
                             <li class="nav-item">
                                 <a href="{{url('/admin/time_table')}}" class="nav-link {{ url()-> current() == url('/admin/time_table') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-user-clock"></i>
@@ -211,7 +215,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </p>
                                 </a>
                             </li>
-                        @endif
 
                         <li class="nav-item menu-open1">
                             <a href="#" class="nav-link">
@@ -253,7 +256,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" id="table-container">
             @yield('content')
         </div>
         <!-- /.content-wrapper -->
@@ -281,8 +284,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
-
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src=" https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <!-- jQuery -->
+{{--    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>--}}
     <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
@@ -290,6 +295,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+    <script>
+        $(document).ready(function (){
+            new DataTable('#myTable');
+        });
+    </script>
 </body>
 
 </html>

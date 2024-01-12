@@ -23,25 +23,18 @@
                         <div class="card-body">
                             <span>Do you want to delete user <strong>{{ $data->name }}</strong>?</span>
                             <ul class="list-unstyled">
-                                @if($data->image)
-                                    <li>
-                                        <img
-                                            style="width: 100%; max-height: 480px;"
-                                            src="{{ asset('/images').'/'.$data->image }}"
-                                            class="img-fluid img-thumbnail"
-                                            alt="{{ $data->name }}"
-                                        >
-                                    </li>
-                                @else
-                                    <li>
-                                        <img
-                                            style="width: 100%;"
-                                            class="img-thumbnail"
-                                            src="{{ asset('dist/img/no_profile.jpg')}}"
-                                            alt="image">
-                                    </li>
-                                @endif
-                                <li><strong>Name:</strong> {{ $data->name }}</li>
+
+                                <li>
+                                    <img
+                                        style="width: 100%; max-height: 480px;"
+                                        src="{{ asset('/images').'/'.$data->image }}"
+                                        class="img-fluid img-thumbnail"
+                                        alt="{{ $data->name }}"
+                                    >
+                                </li>
+                                <li><strong>Name : </strong> {{ ucfirst($data->name) }} </li>
+                                <li><strong>Email: </strong> {{ $data->email }} </li>
+                                <li><strong>Role : </strong> {{ strtoupper($data->permission) }} </li>
                             </ul>
                             <div class="row">
                                 <div class="col-12 col-md-12 col-lg-6 mb-2">

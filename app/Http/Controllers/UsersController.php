@@ -11,10 +11,14 @@ class UsersController extends Controller
 {
     //fetch data from user table function
     public static function index(Request $request){
+//        $data = User::all();
+//        return view('users.users',['data'=>$data]);
+
         $data = User::all();
 
-        return view('users.users',['data'=>$data]);
+        return view('users.users', ['data' => $data]);
     }
+
 
 //    go to create user form function
     public static function index_create(Request $request){

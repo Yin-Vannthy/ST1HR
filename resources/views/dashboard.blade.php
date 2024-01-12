@@ -27,7 +27,6 @@
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3>150</h3>
-
                             <p>New Orders</p>
                         </div>
                         <div class="icon">
@@ -42,7 +41,6 @@
                     <div class="small-box bg-success">
                         <div class="inner">
                             <h3>53<sup style="font-size: 20px">%</sup></h3>
-
                             <p>Bounce Rate</p>
                         </div>
                         <div class="icon">
@@ -57,7 +55,6 @@
                     <div class="small-box bg-warning">
                         <div class="inner">
                             <h3>44</h3>
-
                             <p>User Registrations</p>
                         </div>
                         <div class="icon">
@@ -72,7 +69,6 @@
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>65</h3>
-
                             <p>Unique Visitors</p>
                         </div>
                         <div class="icon">
@@ -85,18 +81,39 @@
             </div>
 
             <div class="row py-1">
-                <div class="col-12">
-                    <a href="{{ route('clock_in').'?id='.auth()->user()->id }}">
-                        <button
-                            class="btn btn-primary w-100"
-                            style="height: 10vh"
-                        >
-                            <h3>
-                                <i class="far fa-clock"></i>
-                                Clock In
-                            </h3>
-                        </button>
-                    </a>
+                <div class="col-12 ">
+                    @php
+                        $clockedIn = \App\Models\ClockInOut::where('user_id', auth()->user()->id)
+                            ->whereNull('clock_out_ip')
+                            ->exists();
+                    @endphp
+
+                    @if($clockedIn)
+                        <a href="{{ route('clock_out').'?id='.auth()->user()->id }}">
+                            <button
+                                class="btn btn-danger w-100"
+                                style="height: 10vh"
+                            >
+                                <h3>
+                                    <i class="far fa-clock"></i>
+                                    Clock Out
+                                </h3>
+                            </button>
+                        </a>
+                    @else
+                        <a href="{{ route('clock_in').'?id='.auth()->user()->id }}">
+                            <button
+                                class="btn btn-primary w-100"
+                                style="height: 10vh"
+                            >
+                                <h3>
+                                    <i class="far fa-clock"></i>
+                                    Clock In
+                                </h3>
+                            </button>
+                        </a>
+                    @endif
+
                     <br>
                     <br>
                     @if(session('status'))
@@ -104,6 +121,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    @if($errors->has('clock_in'))
+                        <div class="alert alert-danger">
+                            {{ $errors->first('clock_in') }}
+                        </div>
+                    @endif
+                </div>
+                <div class="col-6">
+                    <!-- You can add content here if needed -->
                 </div>
             </div>
         </div>
